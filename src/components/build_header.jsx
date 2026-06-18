@@ -14,7 +14,10 @@ function BuildHeader() {
             <p className="text-white font-bold">Trivia</p>
           </div>
 
-          <Button type="button" onClick={navigate("/login", { replace: true })}>
+          <Button
+            type="button"
+            onClick={() => navigate("/login", { replace: true })}
+          >
             <LogOut data-icon="inline-start" aria-hidden="true" />
             Logout
           </Button>

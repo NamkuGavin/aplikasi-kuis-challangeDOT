@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 function HomeView() {
+  const navigate = useNavigate();
+
   return (
-    <main className="flex min-h-screen flex-col">
+    <main className="flex min-h-[calc(100vh-64px)] flex-col">
       <div className="flex flex-1 flex-col items-center justify-center bg-[#383E4E]">
         <div className="mb-7 bg-[#FF7200] rounded-full px-7 py-2 w-75 text-white font-bold text-center">
           ✦ Muhammad Gavin Arasyi ✦
@@ -20,10 +23,11 @@ function HomeView() {
         </h3>
 
         <Button
-          type="submit"
+          type="button"
+          onClick={() => navigate("/quiz")}
           className="w-1/2 bg-[#FF7200] inline-flex min-h-11 rounded-lg font-bold transition-all"
         >
-          Mulaikan Quiz mu!
+          Mulai Kuis!
         </Button>
       </div>
       <div className="flex flex-col h-40 shrink-0 bg-[#222222] justify-center items-center">
