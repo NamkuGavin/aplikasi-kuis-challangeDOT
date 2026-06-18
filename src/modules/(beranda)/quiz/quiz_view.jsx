@@ -23,9 +23,9 @@ function QuizView() {
   const [errorMessage, setErrorMessage] = useState("");
   const [requestKey, setRequestKey] = useState(0);
 
-  const totalQuestions = pertanyaan.length;
-  const currentQuestion = pertanyaan[pertanyaanIndex];
-  const incorrectCount = jumlahMenjawab - jumlahJawabanBenar;
+  const totalPertanyaan = pertanyaan.length;
+  const pertanyaanSekarang = pertanyaan[pertanyaanIndex];
+  const jumlahJawabanSalah = jumlahMenjawab - jumlahJawabanBenar;
 
   useEffect(() => {
     let isActive = true;
@@ -91,16 +91,16 @@ function QuizView() {
   }, [pertanyaanIndex]);
 
   function handleAnswer(answer) {
-    if (answerLocked.current || status !== "playing" || !currentQuestion) {
+    if (answerLocked.current || status !== "playing" || !pertanyaanSekarang) {
       return;
     }
     answerLocked.current = true;
     setJumlahMenjawab((currentCount) => currentCount + 1);
 
-    if (answer === currentQuestion.correctAnswer) {
+    if (answer === pertanyaanSekarang.correctAnswer) {
       setJumlahJawabanBenar((currentCount) => currentCount + 1);
     }
-    if (pertanyaanIndex === totalQuestions - 1) {
+    if (pertanyaanIndex === totalPertanyaan - 1) {
       setStatus("finished");
       return;
     }
@@ -142,10 +142,10 @@ function QuizView() {
     return (
       <BuildFinishQuiz
         handleRestart={handleRestart}
-        incorrectCount={incorrectCount}
+        jumlahJawabanSalah={jumlahJawabanSalah}
         jumlahJawabanBenar={jumlahJawabanBenar}
         jumlahMenjawab={jumlahMenjawab}
-        totalQuestions={totalQuestions}
+        totalPertanyaan={totalPertanyaan}
       />
     );
   }
@@ -157,7 +157,7 @@ function QuizView() {
           <div>
             <p className="text-sm text-white/70">Progress pengerjaan</p>
             <p className="font-bold">
-              {jumlahMenjawab} dari {totalQuestions} soal dijawab
+              {jumlahMenjawab} dari {totalPertanyaan} soal dijawab
             </p>
           </div>
           <div
@@ -173,12 +173,12 @@ function QuizView() {
         </div>
         <div className="rounded-2xl bg-white p-6 text-[#262A35] shadow-xl">
           <h1 className="text-xl font-bold leading-relaxed">
-            {currentQuestion.question}
+            {pertanyaanSekarang.question}
           </h1>
           <p className="mt-2 text-sm text-gray-500">Pilih jawaban</p>
 
           <div className="mt-7 grid gap-3">
-            {currentQuestion.answers.map((answer, index) => (
+            {pertanyaanSekarang.answers.map((answer, index) => (
               <Button
                 key={answer}
                 type="button"
