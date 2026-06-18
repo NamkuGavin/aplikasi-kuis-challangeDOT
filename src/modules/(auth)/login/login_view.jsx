@@ -3,7 +3,7 @@ import LoginForm from "./components/login_form";
 
 function LoginView() {
   return (
-    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gray-50 px-25">
+    <main className="flex min-h-screen items-center justify-center bg-gray-50 px-25">
       <div className="flex w-full bg-white rounded-2xl shadow-sm border border-gray-100">
         <div className="w-1/2 bg-[#383E4E] p-10 rounded-l-xl flex flex-col">
           <div className="flex items-center gap-4 mb-15">

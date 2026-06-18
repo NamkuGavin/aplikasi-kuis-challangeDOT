@@ -42,8 +42,7 @@ function LoginForm() {
       return;
     }
 
-    const destination = location.state?.from?.pathname ?? "/home";
-    navigate(destination, { replace: true });
+    navigate("/beranda", { replace: true });
   }
 
   return (
